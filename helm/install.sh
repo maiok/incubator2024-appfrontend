@@ -1,0 +1,1 @@
+helm install incubator2024-appfrontend .

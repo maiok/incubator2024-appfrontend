@@ -1,0 +1,1 @@
+docker stop appfrontend && docker rm appfrontend

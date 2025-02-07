@@ -1,0 +1,20 @@
+# kubectl create service nodeport service-appfrontend --tcp=8080:8080 --dry-run -o yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: service-appfrontend
+  name: service-appfrontend
+spec:
+  ports:
+  - name: 8080-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: appfrontend
+  type: ClusterIP
+status:
+  loadBalancer: {}

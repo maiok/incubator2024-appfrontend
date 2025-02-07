@@ -1,9 +1,9 @@
 # Multi-stage build docker file
 
 # app build stage
-FROM node:12-alpine as build
+FROM node:12-alpine AS build
 WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
+ENV PATH=/app/node_modules/.bin:$PATH
 COPY ./package.json /app/
 COPY ./yarn.lock /app/
 RUN yarn
@@ -22,3 +22,5 @@ COPY conf.d/default.conf /etc/nginx/conf.d
 # 2. pridat instrukciu, ktora zabezpeci, ze po vytvoreni kontajnera sa spusti nginx:
 #   nginx -g daemon off;
 #   TIP: pozor ako zadavate parametre do instrukcie
+EXPOSE 8080
+CMD ["nginx", "-g", "daemon off;"]

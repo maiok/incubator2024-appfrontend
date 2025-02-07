@@ -1,0 +1,30 @@
+# kubectl create deployment appfrontend --image=maiok/incubator2024-appfrontend --port=8080 --replicas=1 --dry-run=client -o yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: appfrontend
+  name: appfrontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appfrontend
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: appfrontend
+    spec:
+      containers:
+      - image: maiok/incubator2024-appfrontend
+        name: incubator2024-appfrontend
+        ports:
+        - containerPort: 8080
+        resources: {}
+        env:
+        - name: REACT_APP_APIHOSTPORT
+          value: "127.0.0.1:64967"
+status: {}
